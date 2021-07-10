@@ -4,6 +4,7 @@ import { } from 'styled-components/macro'
 interface Props<T extends JSXElementConstructor<any>> {
   component: T
   data: ComponentProps<T>[]
+  identifier: keyof ComponentProps<T>
 }
 
 export function List<T extends JSXElementConstructor<any>>({ data, component: Component }: Props<T>) {
@@ -20,7 +21,7 @@ export function List<T extends JSXElementConstructor<any>>({ data, component: Co
   )
 }
 
-export const ListItem = ({ title, content }: { title: string, content: any }) => {
+export const ListItem = ({title, content }: { id:string, title: string, content: any }) => {
   return (
     <li css={`
     border-bottom:1px solid var(--border-color);
@@ -41,3 +42,14 @@ export const ListItem = ({ title, content }: { title: string, content: any }) =>
     </li>
   )
 }
+
+
+//const Test = ()=> <List
+//  component={ListItem}
+//  data={[
+//    {id:'123',title:'test', content:'toast'},
+//    {id:'123',title:'test', content:'toast'},
+//    {id:'123',title:'test', content:'toast'},
+//  ]}
+//  identifier="title"
+///>
