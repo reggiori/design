@@ -20,9 +20,6 @@
     "react",
     "@typescript-eslint"
   ],
-  "ignorePatterns": [
-    "workers/"
-  ],
   "rules": {
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",

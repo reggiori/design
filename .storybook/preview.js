@@ -1,4 +1,5 @@
-//import {TextField} from 'components/form/TextField'
+
+import ReggioriRoot from 'index'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -12,8 +13,8 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <>
+    <ReggioriRoot>
       <Story />
-    </>
+    </ReggioriRoot>
   ),
 ];

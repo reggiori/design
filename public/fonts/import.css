@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Montserrat/Montserrat-Regular.ttf) format('truetype');
+}
+
+/* ***************** */
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Nunito_Sans/NunitoSans-Italic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(Nunito_Sans/NunitoSans-BoldItalic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Nunito_Sans/NunitoSans-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(Nunito_Sans/NunitoSans-Bold.ttf) format('truetype');
+}
+
+/* ***************** */
+
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Pacifico/Pacifico-Regular.ttf) format('truetype');
+}
