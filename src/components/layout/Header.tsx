@@ -5,16 +5,22 @@ interface HeaderProps {
   /**
    * Input value
    */
-  title:string
+  title: string;
 }
 
-export const Header= ({title,...props}: HeaderProps)=>{
-
-  return <header css={`
-    background:var(--primary-color);
-    height:50px;
-    line-height:50px;
-    color:#fff;
-    padding:0 20px;
-  `} {...props}>{title}</header>
+export const Header = ({ title, ...props }: HeaderProps) => {
+  return (
+    <header
+      css={`
+        background: var(--primary-color);
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+        padding: 0 20px;
+      `}
+      {...props}
+    >
+      {title}
+    </header>
+  )
 }
