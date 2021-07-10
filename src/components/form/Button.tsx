@@ -1,20 +1,20 @@
 import {} from 'styled-components/macro'
 
-interface TextFieldProps {
+interface ButtonProps {
   /**
    * Button content
    */
-  text:any
+  text:string
   /**
    * Optional click handler
    */
   onClick?: () => void;
 }
 
-export const Button= ({text,...props}: TextFieldProps)=>{
+export const Button= ({text,...props}: ButtonProps)=>{
   return <button css={`
     border:none;
-    background: linear-gradient(to right, #4776e6, #8e54e9);
+    background: var(--primary-color);
     color:#fff;
     line-height:2.5em;
     padding:0 1em;
