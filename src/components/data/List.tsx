@@ -1,13 +1,20 @@
+import { useState } from 'react'
 import { ComponentProps, JSXElementConstructor } from 'react'
 import { } from 'styled-components/macro'
 
-interface Props<T extends JSXElementConstructor<any>> {
+interface ListItemProps{
+  onClick:()=>any
+}
+
+interface Props<T extends JSXElementConstructor<ComponentProps<T>&ListItemProps>> {
   component: T
   data: ComponentProps<T>[]
   identifier: keyof ComponentProps<T>
 }
 
-export function List<T extends JSXElementConstructor<any>>({ data, component: Component }: Props<T>) {
+export function List<T extends JSXElementConstructor<ComponentProps<T>&ListItemProps>>({ data, component: Component, identifier }: Props<T>) {
+  const [selected,setSelected] = useState<string>()
+
   return (
     <ul css={`
     list-style-type:none;
@@ -16,7 +23,7 @@ export function List<T extends JSXElementConstructor<any>>({ data, component: Co
     overflow-y:auto;
     flex:1;
     `}>
-      {data.map((itemData, index) => <Component key={index} {...itemData} />)}
+      {data.map((itemData, index) => <Component key={index} {...itemData} onClick={()=>setSelected(itemData[identifier])} />)}
     </ul>
   )
 }
