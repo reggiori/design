@@ -10,5 +10,6 @@ const Template: ComponentStory<typeof TextField> = (args) => <TextField {...args
 
 export const Primary = Template.bind({})
 Primary.args = {
-  value:'Lorem ipsum',
+  value:'contact@reggiori.dev',
+  type:'email',
 }

@@ -1,16 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: 'Nunito Sans', sans-serif;
-  }
-`
+import 'base.scss'
 
 export default ({ children }: { children: any }) => {
   return (
     <>
-    test
-      <GlobalStyle/>
       {children}
     </>
   )
