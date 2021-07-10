@@ -1,5 +1,5 @@
 import { ComponentStory,ComponentMeta } from '@storybook/react'
-import {List, ListItem} from 'components/data/List'
+import {List, ListItem} from 'components'
 
 export default {
   title:'Data/List',
