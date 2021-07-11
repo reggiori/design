@@ -22,6 +22,8 @@ const Template: ComponentStory<typeof List> = (args) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  data: new Array(50).fill(null).map(() => ({ title: faker.name.findName(), content: faker.lorem.sentence(5, 10) })),
+  identifier: 'id',
+  data: new Array(50).fill(null).map((_, index) => ({ id: index, title: faker.name.findName(), content: faker.lorem.sentence(5, 10) })),
   component: ListItem,
+  onChange: val => console.log(val),
 }

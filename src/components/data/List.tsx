@@ -1,19 +1,28 @@
 import { useState } from 'react'
-import { ComponentProps, JSXElementConstructor } from 'react'
+import { useEffect } from 'react'
+import { JSXElementConstructor, ComponentProps } from 'react'
 import { } from 'styled-components/macro'
 
-interface ListItemProps{
-  onClick:()=>any
+type OneOnly<Obj, K extends keyof Obj> = { [key in Exclude<keyof Obj, K>]: null } & { [key in K]: Obj[K] };
+
+type ListItemProps<T> = T & {
+  onClick: () => void
+  selected: boolean
 }
 
-interface Props<T extends JSXElementConstructor<ComponentProps<T>&ListItemProps>> {
+interface Props<T extends JSXElementConstructor<ComponentProps<T>>, K extends keyof ComponentProps<T>> {
   component: T
   data: ComponentProps<T>[]
-  identifier: keyof ComponentProps<T>
+  identifier: keyof OneOnly<ComponentProps<T>, K>
+  onChange: (val: K | undefined) => void
 }
 
-export function List<T extends JSXElementConstructor<ComponentProps<T>&ListItemProps>>({ data, component: Component, identifier }: Props<T>) {
-  const [selected,setSelected] = useState<string>()
+export function List<T extends JSXElementConstructor<ComponentProps<T>>, K extends keyof ComponentProps<T>>({ data, component: Component, identifier, onChange }: Props<T, K>) {
+  const [selected, setSelected] = useState<K>()
+
+  useEffect(() => {
+    onChange(selected)
+  }, [selected])
 
   return (
     <ul css={`
@@ -23,14 +32,14 @@ export function List<T extends JSXElementConstructor<ComponentProps<T>&ListItemP
     overflow-y:auto;
     flex:1;
     `}>
-      {data.map((itemData, index) => <Component key={index} {...itemData} onClick={()=>setSelected(itemData[identifier])} />)}
+      {data.map((itemData, index) => <Component key={index} {...itemData} onClick={() => setSelected((itemData as any)[identifier])} />)}
     </ul>
   )
 }
 
-export const ListItem = ({title, content }: { id:string, title: string, content: any }) => {
+export const ListItem = ({ id, title, content, ...props }: ListItemProps<{ id: number, title: string, content: any }>) => {
   return (
-    <li css={`
+    <li {...props} css={`
     border-bottom:1px solid var(--border-color);
     padding:8px;
 
@@ -51,12 +60,13 @@ export const ListItem = ({title, content }: { id:string, title: string, content:
 }
 
 
-//const Test = ()=> <List
-//  component={ListItem}
-//  data={[
-//    {id:'123',title:'test', content:'toast'},
-//    {id:'123',title:'test', content:'toast'},
-//    {id:'123',title:'test', content:'toast'},
-//  ]}
-//  identifier="title"
-///>
+const Test = () => <List
+  component={ListItem}
+  data={[
+    { id: 1, title: 'test', content: 'toast' },
+    { id: 2, title: 'test', content: 'toast' },
+    { id: 3, title: 'test', content: 'toast' },
+  ]}
+  identifier="id"
+  onChange={val => console.log(val)}
+/>
