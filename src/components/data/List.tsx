@@ -53,15 +53,3 @@ export const ListItem = ({ title, content, selected, onClick }: ListItemProps<{ 
     </li>
   )
 }
-
-
-const Test = () => <List
-  component={ListItem}
-  data={[
-    { id: 1, title: 'test', content: 'toast' },
-    { id: 2, title: 'test', content: 'toast' },
-    { id: 3, title: 'test', content: 'toast' },
-  ]}
-  identifier="id"
-  onChange={val => console.log(val)}
-/>
