@@ -4,7 +4,7 @@ import { List, ListItem, ListItemProps, Icon } from 'components'
 import { } from 'styled-components/macro'
 import faker from 'faker'
 
-const sampleData = new Array(50).fill(null).map((_, index) => ({ id: index, title: faker.name.findName(), content: faker.lorem.sentence(6, 15) }))
+
 
 
 export default {
@@ -44,9 +44,32 @@ const Template: ComponentStory<any> = (args) => (
       `}
     />
     <List
-      css="width:180px"
-      component={ListItem}
-      data={sampleData}
+      css="width:200px"
+      component={({ name, subject, content, onClick, selected }: ListItemProps<{ id: number, name: string, subject: string, content: string }>) => <li onClick={onClick} style={{ background: selected ? '#fff' : 'none' }} css={`
+        border-bottom:1px solid var(--border-color);
+        padding:8px 10px;
+        line-height:1.3em;
+      `}>
+        <div css={`
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight:bold;
+        `}>{name}</div>
+        <div css={`
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        `}>{subject}</div>
+        <div css={`
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size:12px;
+        color:#7b7b7b;
+        `}>{content}</div>
+      </li>}
+      data={new Array(50).fill(null).map((_, index) => ({ id: index, name: faker.name.findName(), subject: faker.lorem.sentence(5, 8), content: faker.lorem.sentence(6, 15) }))}
       identifier="id"
     />
     <iframe css="flex:1;" frameBorder="none" src="https://example.com/" />
