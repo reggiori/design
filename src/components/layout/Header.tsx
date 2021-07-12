@@ -18,6 +18,8 @@ export const Header = ({ logo, ...props }: HeaderProps) => {
         color: #fff;
         padding: 0 20px;
         display:flex;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
+        z-index:5;
       `}
       {...props}
     >
