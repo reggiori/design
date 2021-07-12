@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { JSXElementConstructor, ComponentProps } from 'react'
+import { FC, createElement, useState, useEffect } from 'react'
 import { } from 'styled-components/macro'
 
 type OneOnly<Obj, K extends keyof Obj> = { [key in Exclude<keyof Obj, K>]: null } & { [key in K]: Obj[K] };
@@ -10,19 +8,17 @@ type ListItemProps<T> = T & {
   selected: boolean
 }
 
-interface Props<T extends JSXElementConstructor<ComponentProps<T>>, K extends keyof ComponentProps<T>> {
+interface Props<D, T extends FC<ListItemProps<D>>, K extends keyof D> {
   component: T
-  data: ComponentProps<T>[]
-  identifier: keyof OneOnly<ComponentProps<T>, K>
-  onChange: (val: K | undefined) => void
+  data: D[]
+  identifier: keyof OneOnly<D, K>
+  onChange: (val: D[K] | undefined) => void
 }
 
-export function List<T extends JSXElementConstructor<ComponentProps<T>>, K extends keyof ComponentProps<T>>({ data, component: Component, identifier, onChange }: Props<T, K>) {
-  const [selected, setSelected] = useState<K>()
+export function List<D, T extends FC<ListItemProps<D>>, K extends keyof D>({ data, component, identifier, onChange }: Props<D, T, K>) {
+  const [selected, setSelected] = useState<D[K]>()
 
-  useEffect(() => {
-    onChange(selected)
-  }, [selected])
+  useEffect(() => { onChange(selected) }, [selected])
 
   return (
     <ul css={`
@@ -32,17 +28,16 @@ export function List<T extends JSXElementConstructor<ComponentProps<T>>, K exten
     overflow-y:auto;
     flex:1;
     `}>
-      {data.map((itemData, index) => <Component key={index} {...itemData} onClick={() => setSelected((itemData as any)[identifier])} />)}
+      {data.map((itemData, index) => createElement(component, { key: index, ...itemData, selected: itemData[identifier] === selected, onClick: () => setSelected(itemData[identifier] as D[K]) }))}
     </ul>
   )
 }
 
-export const ListItem = ({ id, title, content, ...props }: ListItemProps<{ id: number, title: string, content: any }>) => {
+export const ListItem = ({ title, content, selected, onClick }: ListItemProps<{ id: number, title: string, content: any }>) => {
   return (
-    <li {...props} css={`
+    <li style={{ background: selected ? '#f1f1f3' : 'none' }} onClick={onClick} css={`
     border-bottom:1px solid var(--border-color);
     padding:8px;
-
     &>div{
       white-space:nowrap;
       overflow:hidden;
