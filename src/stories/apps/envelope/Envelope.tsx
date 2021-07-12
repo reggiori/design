@@ -21,9 +21,11 @@ const Template: ComponentStory<any> = (args) => (
       identifier="id"
       component={({ name, icon, onClick, selected }: ListItemProps<{ id: string, name: string, icon: string }>) => <li onClick={onClick} style={{ background: selected ? '#fff' : 'none' }} css={`
         line-height:3em;
-        border-bottom:1px solid var(--border-color);
+        //border-bottom:1px solid var(--border-color);
         padding:0 10px;
       `}><Icon name={icon} css={`
+        position:relative;
+        top:-2px;
         font-size:18px;
         vertical-align:middle;
         margin-right:10px;
