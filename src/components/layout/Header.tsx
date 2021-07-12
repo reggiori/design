@@ -1,4 +1,5 @@
-import {} from 'styled-components/macro'
+import { } from 'styled-components/macro'
+import { TextField } from 'components'
 
 interface HeaderProps {
   /**
@@ -16,10 +17,28 @@ export const Header = ({ title, ...props }: HeaderProps) => {
         line-height: 50px;
         color: #fff;
         padding: 0 20px;
+        display:flex;
       `}
       {...props}
     >
-      {title}
+      <div css="flex:1;">
+        {title}
+      </div>
+      <div css="flex:1;text-align:center;">
+        <TextField
+          placeholder="Search ..."
+          css={`
+          background:rgba(255,255,255,.2);
+          color:#fff;
+          width:calc(100% - 100px);
+
+          &::placeholder {
+            color: #fff;
+            opacity: .75;
+          }
+        `} />
+      </div>
+      <div css="flex:1;"></div>
     </header>
   )
 }
