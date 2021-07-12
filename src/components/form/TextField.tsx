@@ -29,6 +29,7 @@ export const TextField = ({ value, type = 'text', ...props }: TextFieldProps & O
     line-height:2.5em;
     padding:0 1em;
     border-radius:3px;
+    box-sizing:border-box;
   `}
     value={val}
     onChange={ev => setVal(ev.target.value)}

@@ -1,3 +1,5 @@
+export * from 'components/icon/Icon'
+
 export * from 'components/data/List'
 
 export * from 'components/form/Button'

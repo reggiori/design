@@ -5,10 +5,10 @@ interface HeaderProps {
   /**
    * Input value
    */
-  title: string;
+  logo: string;
 }
 
-export const Header = ({ title, ...props }: HeaderProps) => {
+export const Header = ({ logo, ...props }: HeaderProps) => {
   return (
     <header
       css={`
@@ -22,15 +22,15 @@ export const Header = ({ title, ...props }: HeaderProps) => {
       {...props}
     >
       <div css="flex:1;">
-        {title}
+        {logo}
       </div>
       <div css="flex:1;text-align:center;">
         <TextField
           placeholder="Search ..."
           css={`
-          background:rgba(255,255,255,.2);
-          color:#fff;
-          width:calc(100% - 100px);
+          background: rgba(255,255,255,.2);
+          color: #fff;
+          width: calc(100% - 100px);
 
           &::placeholder {
             color: #fff;
