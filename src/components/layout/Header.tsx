@@ -24,7 +24,7 @@ export const Header = ({ logo, ...props }: HeaderProps) => {
       <div css="flex:1;">
         {logo}
       </div>
-      <div css="flex:1;text-align:center;">
+      <div css="width:500px;text-align:center;">
         <TextField
           placeholder="Search ..."
           css={`

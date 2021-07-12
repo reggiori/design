@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof List> = (args) => (
   <div css={`
-    max-width:200px;
+    max-width:300px;
     border:1px solid var(--border-color);
     max-height:calc(100vh - 2rem);
     height:520px;
@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof List> = (args) => (
   </div>
 )
 
-const sampleData = new Array(50).fill(null).map((_, index) => ({ id: index, title: faker.name.findName(), content: faker.lorem.sentence(5, 10) }))
+const sampleData = new Array(50).fill(null).map((_, index) => ({ id: index, title: faker.name.findName(), content: faker.lorem.sentence(6, 15) }))
 
 export const Primary = Template.bind({})
 Primary.args = {
