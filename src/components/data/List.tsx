@@ -15,7 +15,7 @@ interface Props<D, T extends FC<ListItemProps<D>>, K extends keyof D> {
   onChange: (val: D[K] | undefined) => void
 }
 
-export function List<D, T extends FC<ListItemProps<D>>, K extends keyof D>({ data, component, identifier, onChange }: Props<D, T, K>) {
+export function List<D extends Record<string, any>, T extends FC<ListItemProps<D>>, K extends keyof D>({ data, component, identifier, onChange }: Props<D, T, K>) {
   const [selected, setSelected] = useState<D[K]>()
 
   useEffect(() => { onChange(selected) }, [selected])
@@ -33,7 +33,7 @@ export function List<D, T extends FC<ListItemProps<D>>, K extends keyof D>({ dat
   )
 }
 
-export const ListItem = ({ title, content, selected, onClick }: ListItemProps<{ id: number, title: string, content: any }>) => {
+export const ListItem = ({ title, content, selected, onClick }: ListItemProps<{ id: number, title: string, content: string }>) => {
   return (
     <li style={{ background: selected ? '#f1f1f3' : 'none' }} onClick={onClick} css={`
     border-bottom:1px solid var(--border-color);
@@ -53,3 +53,15 @@ export const ListItem = ({ title, content, selected, onClick }: ListItemProps<{ 
     </li>
   )
 }
+
+
+//const Test = () => <List
+//  component={ListItem}
+//  data={[
+//    { id: 1, title: 'test', content: 'toast' },
+//    { id: 2, title: 'test', content: 'toast' },
+//    { id: 3, title: 'test', content: 'toast' },
+//  ]}
+//  identifier="id"
+//  onChange={val => console.log(val)}
+///>

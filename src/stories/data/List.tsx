@@ -8,6 +8,7 @@ export default {
   component: List,
 } as ComponentMeta<typeof List>
 
+
 const Template: ComponentStory<typeof List> = (args) => (
   <div css={`
     max-width:200px;
@@ -20,10 +21,14 @@ const Template: ComponentStory<typeof List> = (args) => (
   </div>
 )
 
+const sampleData = new Array(50).fill(null).map((_, index) => ({ id: index, title: faker.name.findName(), content: faker.lorem.sentence(5, 10) }))
+
 export const Primary = Template.bind({})
 Primary.args = {
   identifier: 'id',
-  data: new Array(50).fill(null).map((_, index) => ({ id: index, title: faker.name.findName(), content: faker.lorem.sentence(5, 10) })),
+  data: sampleData,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   component: ListItem,
   onChange: val => console.log(val),
 }
