@@ -19,13 +19,14 @@ const Template: ComponentStory<any> = (args) => (
   <App>
     <List
       identifier="id"
-      component={({ name, icon, onClick, selected }: ListItemProps<{ id: string, name: string, icon: string }>) => <li onClick={onClick} style={{ background: selected ? '#fff' : 'none' }} css={`
+      component={({ name, icon, onClick, selected }: ListItemProps<{ id: string, name: string, icon: string }>) => <li onClick={onClick} style={{ background: selected ? '#dcdcdc' : 'none' }} css={`
         line-height:3em;
         //border-bottom:1px solid var(--border-color);
         padding:0 10px;
       `}><Icon name={icon} css={`
         position:relative;
         top:-2px;
+        color: var(--primary-color);
         font-size:18px;
         vertical-align:middle;
         margin-right:10px;
@@ -45,7 +46,7 @@ const Template: ComponentStory<any> = (args) => (
     />
     <List
       css="width:200px"
-      component={({ name, subject, content, onClick, selected }: ListItemProps<{ id: number, name: string, subject: string, content: string }>) => <li onClick={onClick} style={{ background: selected ? '#fff' : 'none' }} css={`
+      component={({ name, subject, content, onClick, selected }: ListItemProps<{ id: number, name: string, subject: string, content: string }>) => <li onClick={onClick} style={{ background: selected ? '#dcdcdc' : 'none' }} css={`
         border-bottom:1px solid var(--border-color);
         padding:8px 10px;
         line-height:1.3em;
