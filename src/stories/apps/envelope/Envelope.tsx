@@ -55,6 +55,7 @@ const Template: ComponentStory<any> = (args) => (
         white-space: nowrap;
         text-overflow: ellipsis;
         font-weight:bold;
+        font-size:12px;
         `}>{name}</div>
         <div css={`
         overflow: hidden;

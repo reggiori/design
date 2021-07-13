@@ -6,7 +6,7 @@ export const App = ({ children }: { children: any }) => (
     height:100vh;
     display:flex;
     flex-direction:column;
-    background:#f1f1f1;
+    background:#fafafa;
   `}>
     <Header logo="App" />
     <main css="flex:1;display:flex;overflow:hidden;">
