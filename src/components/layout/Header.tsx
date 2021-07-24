@@ -1,5 +1,5 @@
 import { } from 'styled-components/macro'
-import { TextField } from 'components'
+import { TextField, Container } from 'components'
 
 interface HeaderProps {
   /**
@@ -23,9 +23,9 @@ export const Header = ({ logo, ...props }: HeaderProps) => {
       `}
       {...props}
     >
-      <div css="flex:1;">
+      <Container>
         {logo}
-      </div>
+      </Container>
       <div css="width:500px;text-align:center;">
         <TextField
           placeholder="Search ..."
@@ -40,7 +40,7 @@ export const Header = ({ logo, ...props }: HeaderProps) => {
           }
         `} />
       </div>
-      <div css="flex:1;"></div>
+      <Container ></Container>
     </header>
   )
 }
